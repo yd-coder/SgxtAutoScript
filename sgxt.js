@@ -16,11 +16,11 @@ function signDaily(i) {
     axios
       .post(
         "https://lsapp.szzgh.org:99/api/cpcfoundingappapi/userScore/addShareAndSignInScore",
-        {
+        JSON.stringify({
           sourceType: 1,
-        },
+        }),
         {
-          insecureHTTPParser: false,
+          insecureHTTPParser: true,
           headers: {
             Host: "lsapp.szzgh.org:99",
             Connection: "keep-alive",
@@ -28,7 +28,7 @@ function signDaily(i) {
             userId: tokenList[i].userId,
             token: tokenList[i].token,
             Accept: "*/*",
-            "Content-Type": "application/x-www-form-urlencoded",
+            "Content-Type": "application/json",
             Referer:
               "https://servicewechat.com/wxaea6bc6b24edf17b/8/page-frame.html",
           },
