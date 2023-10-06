@@ -1,0 +1,39 @@
+name: "SGXT Auto Script"
+
+on:
+  push: #当有代码推送到main分支或按照每天的0点5分时会触发相应的工作流程
+    branches:
+      - main
+  schedule:
+    - cron: "5 16 * * *" #UTC时间，北京时间多8小时
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+      - run: npm install
+
+      - name: Run Script
+        run: |
+          node sgxt.js
+
+      - name: Append Success Log #追加成功日志
+        run: |
+          echo "$(date +%Y-%m-%d\ %H:%M:%S) - 任务执行成功" >> run.log
+
+      - name: Upload log #上传日志
+        uses: actions/upload-artifact@v2
+        with:
+          name: logs
+          path: run.log
+
+      - name: Push log #更新日志
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: auto-checkin
+          branch: main
