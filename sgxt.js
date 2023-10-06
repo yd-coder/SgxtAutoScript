@@ -5,7 +5,7 @@ const moment = require("moment");
 var tokenList = [
   {
     token: "17FD7E7CF29B31C6A7E7315A1A5C4326",
-    phone: "15697858413",
+    phone: "156****8413",
     userId: 212510,
   },
 ];
@@ -20,6 +20,7 @@ function signDaily(i) {
           sourceType: 1,
         },
         {
+          insecureHTTPParser: true,
           headers: {
             Host: "lsapp.szzgh.org:99",
             Connection: "keep-alive",
@@ -54,6 +55,7 @@ function readAddScore(i) {
           id: Math.floor(Math.random() * 10) + 880, // 文章id
         },
         {
+          insecureHTTPParser: true,
           headers: {
             Host: "lsapp.szzgh.org:99",
             Connection: "keep-alive",
@@ -97,6 +99,7 @@ const answerDaily = async (i) => {
           "https://lsapp.szzgh.org:99/api/cpcfoundingappapi/api/questionLibrary/getList",
           {},
           {
+            insecureHTTPParser: true,
             headers: {
               Host: "lsapp.szzgh.org:99",
               Connection: "keep-alive",
@@ -135,6 +138,7 @@ const answerDaily = async (i) => {
               id: answerList[index].id,
             },
             {
+              insecureHTTPParser: true,
               headers: {
                 Host: "lsapp.szzgh.org:99",
                 Connection: "keep-alive",
@@ -174,6 +178,7 @@ const answerDaily = async (i) => {
           inviteUserId: 0,
         },
         {
+          insecureHTTPParser: true,
           headers: {
             Host: "lsapp.szzgh.org:99",
             Connection: "keep-alive",
@@ -208,6 +213,7 @@ function shareDaily(i) {
           sourceType: 4,
         },
         {
+          insecureHTTPParser: true,
           headers: {
             Host: "lsapp.szzgh.org:99",
             Connection: "keep-alive",
@@ -239,6 +245,7 @@ function handlePrize(i) {
       "https://lsapp.szzgh.org:99/api/cpcfoundingappapi/api/lsPrizeBook/doYaoYiYao",
       {},
       {
+        insecureHTTPParser: true,
         headers: {
           Host: "lsapp.szzgh.org:99",
           Connection: "keep-alive",
