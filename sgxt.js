@@ -20,7 +20,7 @@ function signDaily(i) {
           sourceType: 1,
         },
         {
-          insecureHTTPParser: true,
+          insecureHTTPParser: false,
           headers: {
             Host: "lsapp.szzgh.org:99",
             Connection: "keep-alive",
