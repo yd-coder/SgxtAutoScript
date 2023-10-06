@@ -4,7 +4,7 @@ const moment = require("moment");
 // 需要代挂的账号列表
 var tokenList = [
   {
-    token: "17FD7E7CF29B31C6A7E7315A1A5C4326",
+    token: "EEC638E06345324795579B23BFC61BA4",
     phone: "156****8413",
     userId: 212510,
   },
@@ -29,17 +29,25 @@ function signDaily(i) {
             token: tokenList[i].token,
             Accept: "*/*",
             "Content-Type": "application/x-www-form-urlencoded",
-            // Referer:
-            //   "https://servicewechat.com/wxaea6bc6b24edf17b/8/page-frame.html",
+            Referer:
+              "https://servicewechat.com/wxaea6bc6b24edf17b/8/page-frame.html",
           },
         }
       )
       .then((res) => {
-        console.log(
-          `\n============每日签到执行${res.data.msg}🎉${
-            res.data.data.scoreStr
-          } ${moment().format("YYYY-MM-DD HH:mm:ss")}============`
-        );
+        if (res.data.msg === "成功") {
+          console.log(
+            `\n============每日签到执行${res.data.msg}🎉${
+              res.data.data.scoreStr
+            } ${moment().format("YYYY-MM-DD HH:mm:ss")}============`
+          );
+        } else {
+          console.log(
+            `\n============每日签到执行${res.data.msg}❌ ${moment().format(
+              "YYYY-MM-DD HH:mm:ss"
+            )}============`
+          );
+        }
         resolve();
       });
   });
@@ -79,7 +87,7 @@ function readAddScore(i) {
           resolve();
         } else {
           console.log(
-            `\n============阅读任务执行${res.data.msg}🎉 ${moment().format(
+            `\n============阅读任务执行${res.data.msg}❌ ${moment().format(
               "YYYY-MM-DD HH:mm:ss"
             )}============`
           );
