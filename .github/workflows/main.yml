@@ -4,8 +4,8 @@ on:
   push: #当有代码推送到main分支或按照每天的0点5分时会触发相应的工作流程
     branches:
       - main
-  schedule:
-    - cron: "5 16 * * *" #UTC时间，北京时间多8小时
+  #schedule:
+  #- cron: "5 16 * * *" #UTC时间，北京时间多8小时
 
 jobs:
   deploy:
