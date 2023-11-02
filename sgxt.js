@@ -45,10 +45,10 @@ function signDaily(i) {
         }
         resolve()
       })
-    // .catch((err) => {
-    //   console.log(`\n每日签到执行❌ ${err.response.data}`)
-    //   reject()
-    // })
+      .catch((err) => {
+        console.log(`\n每日签到执行❌ ${err.response.data}`)
+        reject()
+      })
   })
 }
 
